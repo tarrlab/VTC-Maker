@@ -12,6 +12,8 @@ For Mac OSX, the only way to script BrainVoyager is through AppleScript or JavaS
 * Clone repository and move VTC Maker app to /Applications folder.
 * Double-click the Installer to copy the VTC Maker.js JavaScript file to ~/Documents/BVQXExtensions/Scripts.
 
+The application uses Graphic User Interface (GUI) Scripting via AppleScript which requires Accessibility Frameworks to be enabled. By default, they are disabled. When the installer runs, it will check to make sure they're enabled and if they aren't, the Universal Access pane in System Preferences will open, and a dialog box will pop up notifying you that you need to check "Enable access for assistive devices."
+
 NOTE: VTC Maker.js was originally written in Coffeescript. Coffeescript installation required for making changes to original .coffee file, see "Modifying Application Scripts" below for details.
 
 ## Use
@@ -78,7 +80,7 @@ The external script for BrainVoyager is written in [Coffeescript](http://coffees
 Coffeescript must be installed for re-compiling to JavaScript after making any changes. Installation instructions:
 
 * Install [Node.js](http://nodejs.org)
-* Issue the following command from terminal:
+* Open terminal and issue the following command:
 
       sudo npm install -g http://github.com/jashkenas/coffee-script/tarball/master
 
