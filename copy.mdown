@@ -1,0 +1,95 @@
+# VTC Maker - for BrainVoyager QX
+
+## Purpose
+
+This application helps automate the process of VTC file creation in BrainVoyager QX.
+The application uses AppleScript as a folder droplet, and Ruby to obtain the file paths for the files relevant to VTC creation, and output a text file that can be read by BrainVoyager.
+
+For Mac OSX, the only way to script BrainVoyager is through AppleScript or JavaScript (which has to be run from within BrainVoyager). While it's possible automate VTC creation through AppleScript, there is no command in the BrainVoyager AppleScript library for specifying target VTC bounding box coordinates. Until BrainVoyager updates the AppleScript command library, it will be necessary to run the included JavaScript file from within BrainVoyager once the application outputs the text file.
+
+## Installation
+
+* Clone repository and move VTC Maker app to /Applications folder.
+* Double-click the Installer to copy the VTC Maker.js JavaScript file to ~/Documents/BVQXExtensions/Scripts.
+
+The application uses Graphic User Interface (GUI) Scripting via AppleScript which requires Accessibility Frameworks to be enabled. By default, they are disabled. When the installer runs, it will check to make sure they're enabled and if they aren't, the Universal Access pane in System Preferences will open, and a dialog box will pop up notifying you that you need to check "Enable access for assistive devices."
+
+NOTE: VTC Maker.js was originally written in Coffeescript. Coffeescript installation required for making changes to original .coffee file, see "Modifying Application Scripts" below for details.
+
+## Use
+
+The application can process one subject at a time. Drop a folder that contains the following files for a single subject onto the VTC Maker application icon (the folder can also have any other miscellaneous files - that won't affect the performance of the script):
+
+* Preprocessed .fmr files
+* _IA.trf file
+* _FA.trf file
+* .vmr file
+
+BrainVoyager QX will automatically open if isn't open already.
+
+A text file will be automatically generated with the total number of lines in the file on the first line (necessary for BrainVoyager to read the text file), and the paths to each preprocessed .fmr file as well as the other reference files. Bounding box coordinates are printed at the end (see comments in Ruby script for explanation of why this is necessary). The text file resembles the following:
+
+      15
+      /Users/aUser/Desktop/Subject1/Subject1-Anat.vmr
+      /Users/aUser/Desktop/Subject1/Subject1_Run5_SCCD_3DMCTS_LTR_THPGLMF2c-TO-ME10-Anat_FA.trf
+      /Users/aUser/Desktop/Subject1/Subject1_Run5_SCCD_3DMCTS_LTR_THPGLMF2c-TO-ME10-Anat_IA.trf
+      /Users/aUser/Desktop/Subject1/Subject1_Run1_SCCD_3DMCTS_LTR_THPGLMF2c.fmr
+      /Users/aUser/Desktop/Subject1/Subject1_Run2_SCCD_3DMCTS_LTR_THPGLMF2c.fmr
+      /Users/aUser/Desktop/Subject1/Subject1_Run3_SCCD_3DMCTS_LTR_THPGLMF2c.fmr
+      /Users/aUser/Desktop/Subject1/Subject1_Run4_SCCD_3DMCTS_LTR_THPGLMF2c.fmr
+      /Users/aUser/Desktop/Subject1/Subject1_Run5_SCCD_3DMCTS_LTR_THPGLMF2c.fmr
+      /Users/aUser/Desktop/Subject1/Subject1_Run6_SCCD_3DMCTS_LTR_THPGLMF2c.fmr
+      /Users/aUser/Desktop/Subject1/Subject1_Run7_SCCD_3DMCTS_LTR_THPGLMF2c.fmr
+      /Users/aUser/Desktop/Subject1/Subject1_Run8_SCCD_3DMCTS_LTR_THPGLMF2c.fmr
+      /Users/aUser/Desktop/Subject1/Subject1_Run9_SCCD_3DMCTS_LTR_THPGLMF2c.fmr
+      /Users/aUser/Desktop/Subject1/Subject1_Run10_SCCD_3DMCTS_LTR_THPGLMF2c.fmr
+      /Users/aUser/Desktop/Subject1/Subject1_Run11_SCCD_3DMCTS_LTR_THPGLMF2c.fmr
+      /Users/aUser/Desktop/Subject1/Subject1_Run12_SCCD_3DMCTS_LTR_THPGLMF2c.fmr
+      BVDimX: 44 244
+      BVDimY: 29 151
+      BVDimZ: 51 209
+
+The file will be saved within the folder that was dropped onto the application. Once the text file is generated, the path to the file will be copied to the clipboard automatically. BrainVoyager QX will open, and the Edit and Run Scripts pane will appear. Double-click the VTC Maker.js script in the Scripts sidebar, and paste the path
+
+## Modifying Application Scripts
+
+There are two internal scripts within this application itself, and one external script that must be run from the BrainVoyager application. To edit them, right-click on the FMR List Generator application, then select Show Package Contents from the popup menu:
+
+![screenshot](https://raw.github.com/tarrlab/VTC-Maker/master/README_Images/screenshot1.png)
+
+### Internal Scripts
+
+The internal application scripts are an AppleScript script and a Ruby script. 
+    
+The Ruby script can be found here after showing package contents as instructed above:
+
+    Contents/VTC_Maker.rb
+
+The AppleScript can be found here:
+
+    Contents/Resources/Scripts/main.scpt
+    
+Alternatively, to edit the AppleScript open AppleScript Editor (located in Applications/Utilities/), and drag the application onto the AppleScript Editor dock icon, or select File...Open, and choose the application.
+
+### External Script
+
+The external script for BrainVoyager is written in [Coffeescript](http://coffeescript.org) and can be found here:
+
+    Contents/BV Scripts/VTC_Maker.coffee
+
+Coffeescript must be installed for re-compiling to JavaScript after making any changes. Installation instructions:
+
+* Install [Node.js](http://nodejs.org)
+* Open terminal and issue the following command:
+
+      sudo npm install -g http://github.com/jashkenas/coffee-script/tarball/master
+
+After making changes to VTC_Maker.coffee, run the following command from terminal to compile to a JavaScript file with the same name (if not including full file path, run from within directory where script is located):
+
+      coffee -c -b VTC_Maker.coffee
+
+The flags stand for --compile and --bare. --bare is necessary in order to compile without the top-level function wrapper, which BrainVoyager can't process.
+
+## Contributors
+
+[Deb Johnson](https://github.com/debjohnson)
