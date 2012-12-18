@@ -53,7 +53,7 @@ The file will be saved within the folder that was dropped onto the application. 
 
 ## Modifying Application Scripts
 
-There are two internal scripts within this application itself, and one external script that must be run from the BrainVoyager application. To edit them, right-click on the FMR List Generator application, then select Show Package Contents from the popup menu:
+There are two internal scripts within this application itself, and one external script that must be run from the BrainVoyager application. To edit them, right-click on the VTC Maker application, then select Show Package Contents from the popup menu:
 
 ![screenshot](https://raw.github.com/tarrlab/VTC-Maker/master/README_Images/screenshot1.png)
 
