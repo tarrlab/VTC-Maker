@@ -30,7 +30,7 @@ BrainVoyager QX will automatically open if isn't open already.
 A text file will be automatically generated with the total number of lines in the file on the first line (necessary for BrainVoyager to read the text file), and the paths to each preprocessed .fmr file as well as the other reference files. Bounding box coordinates are printed at the end (see comments in Ruby script for explanation of why this is necessary). The text file resembles the following:
 
       15
-      /Users/aUser/Desktop/Subject1/Subject1-Anat.vmr
+      /Users/aUser/Desktop/Subject1/Subject1-Anat-Framed.vmr
       /Users/aUser/Desktop/Subject1/Subject1_Run5_SCCD_3DMCTS_LTR_THPGLMF2c-TO-ME10-Anat_FA.trf
       /Users/aUser/Desktop/Subject1/Subject1_Run5_SCCD_3DMCTS_LTR_THPGLMF2c-TO-ME10-Anat_IA.trf
       /Users/aUser/Desktop/Subject1/Subject1_Run1_SCCD_3DMCTS_LTR_THPGLMF2c.fmr

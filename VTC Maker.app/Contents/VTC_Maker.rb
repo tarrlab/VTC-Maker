@@ -64,7 +64,7 @@ textfile_name = "#{base_name}#{subject_id}.txt"
 # Go through the files in the subject's folder, and get the path to the Anat.vmr, _IA, and _FA files using a regular expression
 # Store the paths in the files array
 subject_directories.each do |file|
-  if file =~ /Anat.vmr/
+  if file =~ /Anat-Framed.vmr/
     files << file
   end
   if file =~ /_IA/
