@@ -75,7 +75,7 @@ Alternatively, to edit the AppleScript open AppleScript Editor (located in Appli
 
 The external script for BrainVoyager is written in [Coffeescript](http://coffeescript.org) and can be found here:
 
-    Contents/VTC_Maker.coffee
+    Contents/BV Scripts/VTC_Maker.coffee
 
 Coffeescript must be installed for re-compiling to JavaScript after making any changes. Installation instructions:
 
@@ -84,9 +84,11 @@ Coffeescript must be installed for re-compiling to JavaScript after making any c
 
       sudo npm install -g http://github.com/jashkenas/coffee-script/tarball/master
 
-After making changes to VTC_Maker.coffee, run the following command from terminal to compile to a JavaScript file with the same name:
+After making changes to VTC_Maker.coffee, run the following command from terminal to compile to a JavaScript file with the same name (if not including full file path, run from within directory where script is located):
 
-      coffee --compile VTC_Maker.coffee
+      coffee -c -b VTC_Maker.coffee
+
+The flags stand for --compile and --bare. --bare is necessary in order to compile without the top-level function wrapper, which BrainVoyager can't process.
 
 ## Contributors
 
