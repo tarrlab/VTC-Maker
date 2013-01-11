@@ -2,7 +2,7 @@
 var filename, projfls, readTextFile;
 
 readTextFile = function(name) {
-  var FA_path, IA_path, VMR, VMR_path, filecounter, filename, filenamesfile, files_to_process, fmr_files, fmr_regex, i, make_VTC, match, name_regex, newmatch, nroffiles, textstr, vtc, vtc_names, x_end, x_start, xcoords_regex, y_end, y_start, ycoords_regex, z_end, z_start, zcoords_regex;
+  var FA_path, IA_path, VMR, VMR_path, filecounter, filename, filenamesfile, files_to_process, fmr_files, fmr_regex, i, make_VTC, match, name_regex, newmatch, textstr, total_lines, vtc, vtc_names, x_end, x_start, xcoords_regex, y_end, y_start, ycoords_regex, z_end, z_start, zcoords_regex;
   fmr_files = [];
   vtc_names = [];
   x_start = [];
@@ -15,7 +15,7 @@ readTextFile = function(name) {
   filenamesfile = new QFile(name);
   filenamesfile.open(new QIODevice.OpenMode(QIODevice.ReadOnly));
   textstr = new QTextStream(filenamesfile);
-  nroffiles = parseInt(textstr.readLine());
+  total_lines = parseInt(textstr.readLine());
   VMR_path = textstr.readLine();
   FA_path = textstr.readLine();
   IA_path = textstr.readLine();
@@ -25,7 +25,7 @@ readTextFile = function(name) {
   ycoords_regex = /(BV.*Y\: )(\d+)( )(\d+)/;
   zcoords_regex = /(BV.*Z\: )(\d+)( )(\d+)/;
   filecounter = 0;
-  while (filecounter < nroffiles) {
+  while (filecounter < total_lines) {
     filename = textstr.readLine();
     if (name_regex.test(filename) === true) {
       match = name_regex.exec(filename);
@@ -54,7 +54,7 @@ readTextFile = function(name) {
     filecounter++;
   }
   i = 0;
-  files_to_process = nroffiles - 3;
+  files_to_process = total_lines - 3;
   while (i < files_to_process) {
     VMR = BrainVoyagerQX.OpenDocument(VMR_path);
     VMR.UseBoundingBoxForVTCCreation = true;

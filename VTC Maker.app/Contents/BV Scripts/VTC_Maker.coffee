@@ -26,7 +26,7 @@ readTextFile = (name) ->
   
   # Set a variable to the total number of lines in the document (i.e. whatever the first line says)
   # This is to keep track of where we are in the file and to be able to iterate line by line
-  nroffiles = parseInt(textstr.readLine())
+  total_lines = parseInt(textstr.readLine())
   
   # Set VMR_path to the next line, FMR_path to the next line, etc.
   VMR_path = textstr.readLine()
@@ -49,7 +49,7 @@ readTextFile = (name) ->
   
   # While loop: do stuff until the counter is equal to the total number of lines in the document
   # This loop goes through each line of the document and searches it using regular expressions to figure out which variables to set and store
-  while filecounter < nroffiles
+  while filecounter < total_lines
     # Set filename to the first line of the document
     filename = textstr.readLine()
   
@@ -86,7 +86,7 @@ readTextFile = (name) ->
   i = 0
   
   # Subtract the three lines at the bottom from the remaining number of lines. This is how many FMR files need to be created.
-  files_to_process = (nroffiles-3)
+  files_to_process = (total_lines-3)
   
   # Issue the VTC creation commands to BrainVoyager
   while i < files_to_process
