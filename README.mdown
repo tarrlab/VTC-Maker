@@ -90,6 +90,19 @@ After making changes to VTC_Maker.coffee, run the following command from termina
 
 The flags stand for --compile and --bare. --bare is necessary in order to compile without the top-level function wrapper, which BrainVoyager can't process.
 
+NOTE: If pushing changes that involve the coffeescript file, the user pushing the changes should re-compile the coffeescript file, and put the new VTC_Maker.js inside the Installer to facilitate updates for users syncing local copies with the most updated version. Right-click the Installer icon as shown below, and put the script in the Contents/ folder:
+
+![screenshot](https://raw.github.com/tarrlab/VTC-Maker/master/README_Images/screenshot2.png)
+
+## Obtaining the most updated version of the scripts
+
+If new changes have been pushed, and you'd like to sync your local copy of the application, run the following command in terminal from within the main VTC Maker application directory: 
+
+      git fetch --all
+      git reset --hard origin/master
+      
+NOTE: If updates have been made to the JavaScript file, delete the VTC_Maker.js file from ~/Documents/BVQX EXtensions/Scripts, and rerun the Installer.
+
 ## Contributors
 
 [Deb Johnson](https://github.com/debjohnson)
