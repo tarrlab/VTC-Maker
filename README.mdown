@@ -49,7 +49,9 @@ A text file will be automatically generated with the total number of lines in th
       BVDimY: 29 151
       BVDimZ: 51 209
 
-The file will be saved within the folder that was dropped onto the application. Once the text file is generated, the path to the file will be copied to the clipboard automatically. BrainVoyager QX will open, and the Edit and Run Scripts pane will appear. Double-click the VTC Maker.js script in the Scripts sidebar, and paste the path
+The file will be saved within the folder that was dropped onto the application. Once the text file is generated, the path to the file will be copied to the clipboard automatically. BrainVoyager QX will open, and the Edit and Run Scripts pane will appear. Double-click the VTC Maker.js script in the Scripts sidebar. Paste the path between the quotations at the bottom of the script:
+
+![screenshot](https://raw.github.com/tarrlab/VTC-Maker/master/README_Images/screenshot3.png)
 
 ## Modifying Application Scripts
 
@@ -92,7 +94,7 @@ The flags stand for --compile and --bare. --bare is necessary in order to compil
 
 NOTE: If pushing changes that involve the coffeescript file, the user pushing the changes should re-compile the coffeescript file, and put the new VTC_Maker.js inside the Installer to facilitate updates for users syncing local copies with the most updated version. Right-click the Installer icon as shown below, and put the script in the Contents/ folder:
 
-![screenshot](https://raw.github.com/tarrlab/VTC-Maker/master/README_Images/screenshot2.png)
+![screenshot](https://raw.github.com/tarrlab/VTC-Maker/master/README_Images/screenshot3.png)
 
 ## Obtaining the most updated version of the scripts
 
