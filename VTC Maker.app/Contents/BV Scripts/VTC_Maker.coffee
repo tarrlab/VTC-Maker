@@ -5,12 +5,12 @@ readTextFile = (name) ->
   # Setup empty variables for things we need to find in the text file and save
   fmr_files = []
   vtc_names = []
-  x_start = []
-  x_end = []
-  y_start = []
-  y_end = []
-  z_start = []
-  z_end = []
+  x_start   = []
+  x_end     = []
+  y_start   = []
+  y_end     = []
+  z_start   = []
+  z_end     = []
   
   # Print "Reading textfile.txt" to the BrainVoyager log pane so that the user knows the script is going.
   BrainVoyagerQX.PrintToLog "Reading: " + name
@@ -85,8 +85,11 @@ readTextFile = (name) ->
   
   i = 0
   
+  # Subtract the three lines at the bottom from the remaining number of lines. This is how many FMR files need to be created.
+  files_to_process = (nroffiles-3)
+  
   # Issue the VTC creation commands to BrainVoyager
-  while i < nroffiles
+  while i < files_to_process
     # Open the VMR
     VMR = BrainVoyagerQX.OpenDocument(VMR_path)
   
