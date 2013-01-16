@@ -38,18 +38,18 @@ readTextFile = function(name) {
     }
     if (xcoords_regex.test(filename) === true) {
       match = xcoords_regex.exec(filename);
-      y_start.push(match[2]);
-      y_end.push(match[4]);
+      x_start.push(match[2]);
+      x_end.push(match[4]);
     }
     if (ycoords_regex.test(filename) === true) {
       match = ycoords_regex.exec(filename);
-      z_start.push(match[2]);
-      z_end.push(match[4]);
+      y_start.push(match[2]);
+      y_end.push(match[4]);
     }
     if (zcoords_regex.test(filename) === true) {
       match = zcoords_regex.exec(filename);
-      x_start.push(match[2]);
-      x_end.push(match[4]);
+      z_start.push(match[2]);
+      z_end.push(match[4]);
     }
     filecounter++;
   }

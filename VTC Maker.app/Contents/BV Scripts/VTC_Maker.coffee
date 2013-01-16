@@ -71,16 +71,16 @@ readTextFile = (name) ->
     # Search for the x, y, and z coordinates, set them if the line contains one of the three
     if xcoords_regex.test(filename) is true
       match = xcoords_regex.exec(filename)
-      y_start.push match[2]
-      y_end.push match[4]
-    if ycoords_regex.test(filename) is true
-      match = ycoords_regex.exec(filename)
-      z_start.push match[2]
-      z_end.push match[4]
-    if zcoords_regex.test(filename) is true
-      match = zcoords_regex.exec(filename)
       x_start.push match[2]
       x_end.push match[4]
+    if ycoords_regex.test(filename) is true
+      match = ycoords_regex.exec(filename)
+      y_start.push match[2]
+      y_end.push match[4]
+    if zcoords_regex.test(filename) is true
+      match = zcoords_regex.exec(filename)
+      z_start.push match[2]
+      z_end.push match[4]
     filecounter++
   
   i = 0
